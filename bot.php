@@ -35,11 +35,11 @@ system('mkdir -p ~/storage/shared/Youtube');
 echo $green . "Creating yt-dlp folder for config\n";
 system('mkdir -p ~/.config/yt-dlp');
 
-echo $white . "Creating bin folder\n";
-system('mkdir -p ~/bin');
+echo $white . "Creating Downloader folder\n";
+system('mkdir -p ~/Downloader');
 
 echo $white . "Creating Termux-URL-Opener FILE.\n";
-system('mv termux-url-opener ~/bin/');
+system('mv YT ~/Downloader/');
 system('clear');
 
 echo "\n";
