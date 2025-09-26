@@ -15,6 +15,7 @@ cd YT-DL
 php bot.php
 
 cd 
+
 ls
 
 cd Downloader
