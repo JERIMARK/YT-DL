@@ -1,44 +1,49 @@
 <?php
 
-#$red = #"\033[1;31m";
-#$green = #"\033[1;32m";
-#$blue = #"\033[1;34m";
-#$pink = #"\033[1;35m";
-#$bluesky = "#\033[1;36m";
+// Define colors
+$red     = "\033[1;31m";
+$green   = "\033[1;32m";
+$blue    = "\033[1;34m";
+$pink    = "\033[1;35m";
+$bluesky = "\033[1;36m";
+$white   = "\033[1;37m";
+$yellow  = "\033[1;33m";
+
 system('clear');
 
-$banner2 = "\033[1;32mUpdating default packages \n\n";
+$banner2 = $green . "Updating default packages \n\n";
 echo $banner2;
 system('apt update && apt upgrade -y');
 
-echo "\033[1;32mRequesting acces to storage\n";
+echo $green . "Requesting access to storage\n";
 sleep(2);
-echo "\033[1;32mAllow Storage Permission!\n";
+echo $green . "Allow Storage Permission!\n";
 sleep(2);
 system('termux-setup-storage');
 sleep(5);
 system('clear');
-echo "\033[1;36mInstalling python\n";
+
+echo $bluesky . "Installing python\n";
 system('pkg install python -y');
 
-echo "\033[1;34mInstalling youtube-dl\n";
-system('pip install youtube-dl');
+echo $blue . "Installing yt-dlp (better than youtube-dl)\n";
+system('pip install -U yt-dlp');
 
-echo "\033[1;32mMaking the Youtube Directory to download the Vidoes\n";
-system('mkdir ~/storage/shared/Youtube');
+echo $green . "Making the Youtube Directory to download the Videos\n";
+system('mkdir -p ~/storage/shared/Youtube');
 
-echo "\033[1;32mCreating youtube-dl folder for config\n";
-system('mkdir -p ~/.config/youtube-dl');
+echo $green . "Creating yt-dlp folder for config\n";
+system('mkdir -p ~/.config/yt-dlp');
 
-echo "Creating bin folder\n";
-system('mkdir ~/bin');
+echo $white . "Creating bin folder\n";
+system('mkdir -p ~/bin');
 
-echo "Creating Termux-URL-Opener FILE.\n";
+echo $white . "Creating Termux-URL-Opener FILE.\n";
 system('mv termux-url-opener ~/bin/');
 system('clear');
 
 echo "\n";
-echo "\033[1;32mProcess Complete!\n";
-echo "\033[1;31mNow you can share any Youtube video with Termux\n";
-echo "\033[1;37m[\033[1;32m+\033[1;37m]\033[1;37m ==========[\033[1;33mSUBSCRIBE MY CHANNEL\033[1;37m]==========\033[1;37m [\033[1;32m+\033[1;37m]\n\n";
+echo $green . "Process Complete!\n";
+echo $red . "Now you can share any Youtube video with Termux\n";
+echo $white . "[{$green}+{$white}] ==========[{$yellow}SCRIPT BY AZER{$white}]======>\n";
 
