@@ -3,7 +3,9 @@
 Instructions:
 
 apt update && apt upgrade
+
 apt install php
+
 apt install git
 
 git clone https://github.com/JERIMARK/YT-DL.git
