@@ -22,7 +22,7 @@ ls
 
 cd Downloader
 
-bash YT-DL
+bash YT
 
  
 
