@@ -4,6 +4,8 @@ Instructions:
 
 apt update && apt upgrade
 
+pkg install yt-dlp -y
+
 apt install php
 
 apt install git
