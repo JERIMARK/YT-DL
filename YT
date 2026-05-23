@@ -1,78 +1,88 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-clear
 kill_color=$'\e[0m'
 
-command -v yt-dlp &>/dev/null || { 
+command -v yt-dlp &>/dev/null || {
     printf "\e[031mPlease install yt-dlp manually!\n$kill_color"
     exit 1
 }
 
-echo -e "\e[094m"
-echo " █████╗ ███████╗"
-echo "██╔══██╗╚══███╔╝"
-echo "███████║  ███╔╝ "
-echo "██╔══██║ ███╔╝  "
-echo "██║  ██║███████╗"
-echo "╚═╝  ╚═╝╚══════╝"
-
-echo -e "\e[036m╔════════════════════════════════════════════╗"
-echo -e "\e[032m║ ♚ Tool Name : AZ                           ║"
-echo -e "\e[032m║ ♚ Contributor : Azer                        ║"
-echo -e "\e[032m║ ♚ GitHub : https://github.com/JERIMARK     ║"
-echo -e "\e[032m║ ♚ YouTube : www.youtube.com/@azerrrr       ║"
-echo -e "\e[036m╚════════════════════════════════════════════╝"
-
-printf "\e[032mEnter YouTube URL: $kill_color"
-read url
-
-if [[ -z $url ]]; then
+while true
+do
     clear
-    printf "\e[031mPlease enter a URL!\n$kill_color"
-    exit 1
-fi
 
-echo -e "\e[036m╔════════════════════════════════════╗"
-echo -e "\e[036m║        Select Download Option       ║"
-echo -e "\e[036m╠════════════════════════════════════╣"
-echo -e "\e[032m║ 1. Music Mp3♫                      ║"
-echo -e "\e[032m║ 2. Video 360p                       ║"
-echo -e "\e[032m║ 3. Video 480p                       ║"
-echo -e "\e[032m║ 4. Video 720p                       ║"
-echo -e "\e[032m║ 5. Video 1080p                      ║"
-echo -e "\e[032m║ 6. Video 2160p                      ║"
-echo -e "\e[032m║ 7. Exit                             ║"
-echo -e "\e[036m╚════════════════════════════════════╝"
+    echo -e "\e[094m"
+    echo " █████╗ ███████╗"
+    echo "██╔══██╗╚══███╔╝"
+    echo "███████║  ███╔╝ "
+    echo "██╔══██║ ███╔╝  "
+    echo "██║  ██║███████╗"
+    echo "╚═╝  ╚═╝╚══════╝"
 
-printf "\e[032mChoice: $kill_color"
-read option
+    echo -e "\e[036m╔════════════════════════════════════════════╗"
+    echo -e "\e[032m║ ♚ Tool Name : AZ                           ║"
+    echo -e "\e[032m║ ♚ Contributor : Azer                       ║"
+    echo -e "\e[032m║ ♚ GitHub : https://github.com/JERIMARK     ║"
+    echo -e "\e[032m║ ♚ YouTube : www.youtube.com/@azerrrr       ║"
+    echo -e "\e[036m╚════════════════════════════════════════════╝"
 
-output_path="/data/data/com.termux/files/home/storage/shared/Youtube/%(title)s.%(ext)s"
+    printf "\e[032mEnter YouTube URL: $kill_color"
+    read url
 
-case $option in
-    1)
-        yt-dlp -x --audio-format mp3 -o "$output_path" "$url"
-        ;;
-    2)
-        yt-dlp -f "best[height<=360]" -o "$output_path" "$url"
-        ;;
-    3)
-        yt-dlp -f "best[height<=480]" -o "$output_path" "$url"
-        ;;
-    4)
-        yt-dlp -f "best[height<=720]" -o "$output_path" "$url"
-        ;;
-    5)
-        yt-dlp -f "best[height<=1080]" -o "$output_path" "$url"
-        ;;
-    6)
-        yt-dlp -f "best[height<=2160]" -o "$output_path" "$url"
-        ;;
-    7)
-        exit 0
-        ;;
-    *)
-        printf "\e[031mInvalid option!\n$kill_color"
-        ;;
-esac
+    if [[ -z $url ]]; then
+        clear
+        printf "\e[031mPlease enter a URL!\n$kill_color"
+        sleep 2
+        continue
+    fi
 
+    echo -e "\e[036m╔════════════════════════════════════╗"
+    echo -e "\e[036m║        Select Download Option      ║"
+    echo -e "\e[036m╠════════════════════════════════════╣"
+    echo -e "\e[032m║ 1. Music Mp3♫                      ║"
+    echo -e "\e[032m║ 2. Video 360p                      ║"
+    echo -e "\e[032m║ 3. Video 480p                      ║"
+    echo -e "\e[032m║ 4. Video 720p                      ║"
+    echo -e "\e[032m║ 5. Video 1080p                     ║"
+    echo -e "\e[032m║ 6. Video 2160p                     ║"
+    echo -e "\e[032m║ 7. Exit                            ║"
+    echo -e "\e[036m╚════════════════════════════════════╝"
+
+    printf "\e[032mChoice: $kill_color"
+    read option
+
+    output_path="/data/data/com.termux/files/home/storage/shared/Youtube/%(title)s.%(ext)s"
+
+    case $option in
+        1)
+            yt-dlp -x --audio-format mp3 -o "$output_path" "$url"
+            ;;
+        2)
+            yt-dlp -f "best[height<=360]" -o "$output_path" "$url"
+            ;;
+        3)
+            yt-dlp -f "best[height<=480]" -o "$output_path" "$url"
+            ;;
+        4)
+            yt-dlp -f "best[height<=720]" -o "$output_path" "$url"
+            ;;
+        5)
+            yt-dlp -f "best[height<=1080]" -o "$output_path" "$url"
+            ;;
+        6)
+            yt-dlp -f "best[height<=2160]" -o "$output_path" "$url"
+            ;;
+        7)
+            clear
+            printf "\e[031mExiting...\n$kill_color"
+            exit 0
+            ;;
+        *)
+            printf "\e[031mInvalid option!\n$kill_color"
+            ;;
+    esac
+
+    echo
+    printf "\e[032mDownload complete! Returning to menu...$kill_color\n"
+    sleep 3
+done
